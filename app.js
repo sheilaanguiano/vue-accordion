@@ -64,5 +64,16 @@ const app = new Vue({
       filterList: function(){
         this.type = event.target.value;
       }
+    },
+    computed: {
+      uniqueItemList: function(){
+        const types = [];
+        this.mediaList.forEach((item)=> {
+          if(!types.includes(item.type)){
+            types.push(item.type);
+          }
+        });
+        return types;
+      }
     }
   }); 
