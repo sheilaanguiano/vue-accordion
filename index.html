@@ -18,8 +18,11 @@
         <option v-for="item in uniqueItemList">{{ item }}</option>
       </select>
        <ul>
-        <li v-show="type === '' ||type === media.type" v-for="media in mediaList" v-on:click="toggleDetails(media)">
-          <h3>{{ media.title }}</h3> 
+        <li v-show="type === '' ||type === media.type"    
+            v-for="media in mediaList" 
+            v-on:click="toggleDetails(media)"
+            v-bind:class="[{less:media.showDetail, more:!media.showDetail}, media.type]">
+            <h3>{{ media.title }}</h3> 
           <div v-show="media.showDetail">
             <p>{{ media.description }}</p>
             <p  v-if="media.contributor" class="byline">By: {{ media.contributor }}</p>
